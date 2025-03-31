@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form login and password</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Форма для входа -->
+        <form id="loginForm" method="post" action="/login">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Email" id="loginEmail" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Password" id="loginPassword" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <div class="remember">
+                <label for=""> <input type="checkbox" name="remember"> Remember me </label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+            </div>
+        </form>
+
+        <!-- Форма для регистрации -->
+        <form id="registerForm" style="display:none;" method="post" action="/register">
+            <h1>Register</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Name" id="name" name="name" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email" id="email" name="email" required>
+                <i class='bx bx-envelope'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" id="password" name="password" required>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <div class="register-link">
+                <p>Do you already have an account? <a href="#" onclick="showLogin()">Enter</a></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Показать форму регистрации
+        function showRegister() {
+            document.getElementById("registerForm").style.display = "block";
+            document.getElementById("loginForm").style.display = "none";
+        }
+
+        // Показать форму входа
+        function showLogin() {
+            document.getElementById("registerForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        // Регистрация через fetch
+        document.getElementById("registerForm").onsubmit = async (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const res = await fetch("http://localhost:8080/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, password }),
+                });
+
+                const data = await res.json();
+                console.log('Ответ сервера при регистрации:', data); // Для отладки
+
+                if (!res.ok) {
+                    console.log('Ошибка от сервера:', data.error);
+                    alert(data.error || "Неизвестная ошибка при регистрации");
+                    return;
+                }
+
+                console.log('Успешная регистрация:', data);
+                alert(data.message || "Регистрация прошла успешно");
+
+                // Автоматическая авторизация
+                const loginRes = await fetch("http://localhost:8080/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const loginData = await loginRes.json();
+                console.log('Ответ сервера при авторизации:', loginData); // Для отладки
+
+                if (loginData.success) {
+                    console.log('Успешный вход:', loginData);
+                    localStorage.setItem("token", loginData.token);
+                    window.location.href = "index2.html";
+                } else {
+                    alert(loginData.error || "Неизвестная ошибка при авторизации");
+                }
+            } catch (error) {
+                console.error('Ошибка подключения:', error);
+                alert("Ошибка подключения к серверу: " + error.message);
+            }
+        };
+
+        // Вход через fetch
+        document.getElementById("loginForm").onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            try {
+                const res = await fetch("http://localhost:8080/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await res.json();
+                console.log('Ответ сервера при входе:', data); // Для отладки
+
+                if (!data.success) {
+                    console.log('Ошибка входа:', data.error);
+                    alert(data.error || "Неизвестная ошибка при входе");
+                    return;
+                }
+
+                console.log('Успешный вход:', data);
+                alert("Вход выполнен успешно");
+                localStorage.setItem("token", data.token);
+                window.location.href = "index2.html";
+            } catch (error) {
+                console.error('Ошибка подключения:', error);
+                alert("Ошибка подключения к серверу: " + error.message);
+            }
+        };
+    </script>
+</body>
+</html>
