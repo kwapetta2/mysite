@@ -1,56 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Union 8</title>
-    <link rel="stylesheet" href="style2.css">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Union 8</title>
+  <link rel="stylesheet" href="style2.css"/>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&display=swap');
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.9s ease-in-out;
+    }
+
+    .carousel-item {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    article h3 {
+      margin: 10px 0 5px;
+    }
+
+    article p {
+      margin: 0;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-70%);
+      font-size: 2rem;
+      background-color:rgba(188, 188, 188, 0.227);
+      color: rgba(255, 255, 255, 0.474);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 0; 
+    }
+
+    .carousel-arrow:hover {
+      background-color: rgb(107, 107, 107);
+    }
+
+    .arrow-left {
+      left: 10px;
+    }
+
+    .arrow-right {
+      right: 10px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Union 8!</h1>
-        <nav>
-            <ul>
-                <li><a href="profile.html"><i class='bx bx-user'></i> Profile</a></li>
-                <li><a href="index2.html">Main </a></li>
-                <li><a href="#">Menu</a>
-                    <ul>
-                        <li><a href="products.html">Menu Bar</a></li>
-                        <li><a href="products2.html">Menu Cafe</a></li>
-                    </ul>
-                </li>
-                <li><a href="contact.html"> Contacts </a></li>
-                <li><a href="index.html">Exit <i class='bx bx-log-out-circle'></i></a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Welcome to Union 8!</h1>
+    <nav>
+      <ul>
+        <li><a href="profile.html"><i class='bx bx-user'></i> Profile</a></li>
+        <li><a href="#">Menu</a>
+          <ul>
+            <li><a href="products.html">Menu Bar</a></li>
+            <li><a href="products2.html">Menu Cafe</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="ctaf.html">Staff</a></li>
+        <li><a href="index.html">Exit <i class='bx bx-log-out-circle'></i></a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section>
-        <h2>Our News!</h2>
-        
-        <!-- This is where the dynamically fetched news articles will be displayed -->
-        <div id="news-container"></div>
+  <section>
+    <h2>Our News!</h2>
 
-        <!-- Static example articles (you can remove or update them) -->
-        <article>
+    <div class="carousel">
+      <!-- Стрелки -->
+      <button class="carousel-arrow arrow-left" onclick="goToSlide(currentIndex - 1)">&#10094;</button>
+      <button class="carousel-arrow arrow-right" onclick="goToSlide(currentIndex + 1)">&#10095;</button>
+
+      <div class="carousel-inner" id="carousel-inner">
+        <!-- Static fallback articles -->
+        <div class="carousel-item">
+          <article>
             <img src="orig1.jpg" alt="Coffee Shop">
             <h3>First Coffee Shop in the City</h3>
             <p>Dear residents and guests of our city! Where everyone can enjoy aromatic coffee and a cozy atmosphere!</p>
-        </article>
-        <article>
+          </article>
+        </div>
+        <div class="carousel-item">
+          <article>
             <img src="cupon1.png" alt="Coupons">
             <h3>Coupons Here</h3>
             <p>Coupons that will help you save on purchases and please yourself and your loved ones!</p>
-        </article>
-        <article>
+          </article>
+        </div>
+        <div class="carousel-item">
+          <article>
             <img src="www2.jpg" alt="DJ set">
             <h3>New DJ set</h3>
             <p>Listen to DJ Seta's music here, similar to Butterball Trumpet Part 2, Freez it and more.!</p>
-        </article>
-    </section>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let currentIndex = 0;
+
+    function goToSlide(index) {
+      const carouselInner = document.querySelector('.carousel-inner');
+      const items = document.querySelectorAll('.carousel-item');
+      if (index < 0) index = items.length - 1;
+      if (index >= items.length) index = 0;
+      currentIndex = index;
+      carouselInner.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("news.json")
+        .then(response => {
+          if (!response.ok) throw new Error("Failed to load news.");
+          return response.json();
+        })
+        .then(data => {
+          const carouselInner = document.getElementById("carousel-inner");
+
+          data.forEach(item => {
+            const carouselItem = document.createElement("div");
+            carouselItem.className = "carousel-item";
+
+            const article = document.createElement("article");
+
+            const img = document.createElement("img");
+            img.src = item.image;
+            img.alt = item.alt || "News image";
+
+            const title = document.createElement("h3");
+            title.textContent = item.title;
+
+            const description = document.createElement("p");
+            description.textContent = item.description;
+
+            article.appendChild(img);
+            article.appendChild(title);
+            article.appendChild(description);
+            carouselItem.appendChild(article);
+            carouselInner.appendChild(carouselItem);
+          });
+        })
+        .catch(error => {
+          console.error("News loading error:", error);
+        });
+    });
+  </script>
 </body>
 </html>
