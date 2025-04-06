@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Raleway", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: rgb(107, 107, 107);
+            background-image: url('uni.jpg');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+
+        header {
+            background-color: rgb(49, 38, 38);
+            color: white;
+            font-size: 20px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex; /* Горизонтальное выравнивание */
+            justify-content: center; /* Выравнивание по центру */
+            gap: 15px; /* Промежуток между элементами */
+        }
+        nav li {
+            position: relative;
+        }
+        nav li a {
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgb(80, 70, 70);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для всего меню */
+            min-width: 200px;
+            opacity: 0;
+            pointer-events: none;
+            padding: 0;
+        
+        }
+        nav li:hover > ul {
+            display: block;
+            opacity: 1;
+            pointer-events: all;
+            
+        }
+        
+.container {
+    border: 8px solid #918282; /* Обводка контейнера */
+    border-radius: 40px;
+    padding: 20px;
+    background-color: #ded8d6; /* Светлый фон */
+    margin-top: 10px;
+    min-height: 140vh;
+    margin-top: 20px;
+}
+
+/* Стили для таблицы корзины */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Убираем границы между ячейками */
+    margin-top: 20px; /* Увеличенный отступ сверху */
+}
+
+/* Заголовки таблицы */
+.cart-table th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f3f3f3; /* Легкий фон для заголовков */
+}
+
+/* Строки таблицы */
+.cart-table td {
+    padding: 10px;
+}
+
+/* Общая сумма */
+#cartTotal {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.container {
+    max-width: 900px;
+    margin: 10px auto; /* Исправлено: добавлено px */
+    padding: 20px; /* Исправлено: единое значение для всех сторон + добавлен отступ снизу */
+    padding-bottom: 20px; /* Отступ от последней карточки до нижней границы */
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+    padding: 20px 0; /* Уменьшаем padding с 50px до 20px */
+    margin-bottom: 10px; /* Уменьшаем расстояние до карточек с 50px до 10px */
+}
+
+.staff-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px; /* Уменьшаем расстояние между карточками с 50px до 20px */
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.staff-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+    box-sizing: border-box;
+}
+
+.staff-card:hover {
+    transform: translateY(-10px);
+}
+
+.staff-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.staff-card h3 {
+    margin: 10px 0;
+    color: #141413;
+    font-size: 1.5em;
+}
+
+.staff-card p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #666;
+}
+
+.staff-card .role {
+    font-weight: bold;
+    color: #0c0c0c;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.profile-info {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h2 {
+    margin-top: 0;
+}
+
+.cart {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart h3 {
+    margin-top: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
