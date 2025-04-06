@@ -9,7 +9,7 @@
 <body>
     <div class="wrapper">
         <!-- Форма для входа -->
-        <form id="loginForm" method="post" action="/login">
+        <form id="loginForm">
             <h1>Login</h1>
             <div class="input-box">
                 <input type="email" name="email" placeholder="Email" id="loginEmail" required>
@@ -20,7 +20,7 @@
                 <i class='bx bx-lock-alt'></i>
             </div>
             <div class="remember">
-                <label for=""> <input type="checkbox" name="remember"> Remember me </label>
+                <label> <input type="checkbox" name="remember"> Remember me </label>
             </div>
             <button type="submit" class="btn">Login</button>
             <div class="register-link">
@@ -29,7 +29,7 @@
         </form>
 
         <!-- Форма для регистрации -->
-        <form id="registerForm" style="display:none;" method="post" action="/register">
+        <form id="registerForm" style="display:none;">
             <h1>Register</h1>
             <div class="input-box">
                 <input type="text" placeholder="Name" id="name" name="name" required>
@@ -49,20 +49,19 @@
             </div>
         </form>
     </div>
+    
     <script>
-        // Показать форму регистрации
         function showRegister() {
             document.getElementById("registerForm").style.display = "block";
             document.getElementById("loginForm").style.display = "none";
         }
 
-        // Показать форму входа
         function showLogin() {
             document.getElementById("registerForm").style.display = "none";
             document.getElementById("loginForm").style.display = "block";
         }
 
-        // Регистрация через fetch
+        // Регистрация
         document.getElementById("registerForm").onsubmit = async (e) => {
             e.preventDefault();
             const name = document.getElementById("name").value;
@@ -77,46 +76,30 @@
                 });
 
                 const data = await res.json();
-                console.log('Ответ сервера при регистрации:', data); // Для отладки
-
                 if (!res.ok) {
-                    console.log('Ошибка от сервера:', data.error);
-                    alert(data.error || "Неизвестная ошибка при регистрации");
+                    alert(data.error || "Ошибка при регистрации");
                     return;
                 }
 
-                console.log('Успешная регистрация:', data);
-                alert(data.message || "Регистрация прошла успешно");
+                alert(data.message || "Регистрация успешна");
 
-                // Автоматическая авторизация
-                const loginRes = await fetch("http://localhost:8080/login", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email, password }),
-                });
-
-                const loginData = await loginRes.json();
-                console.log('Ответ сервера при авторизации:', loginData); // Для отладки
-
-                if (loginData.success) {
-                    console.log('Успешный вход:', loginData);
-                    localStorage.setItem("token", loginData.token);
-                    window.location.href = "index2.html";
-                } else {
-                    alert(loginData.error || "Неизвестная ошибка при авторизации");
-                }
+                // Автоматический вход
+                login(email, password);
             } catch (error) {
-                console.error('Ошибка подключения:', error);
-                alert("Ошибка подключения к серверу: " + error.message);
+                alert("Ошибка сервера: " + error.message);
             }
         };
 
-        // Вход через fetch
+        // Вход
         document.getElementById("loginForm").onsubmit = async (e) => {
             e.preventDefault();
             const email = document.getElementById("loginEmail").value;
             const password = document.getElementById("loginPassword").value;
 
+            login(email, password);
+        };
+
+        async function login(email, password) {
             try {
                 const res = await fetch("http://localhost:8080/login", {
                     method: "POST",
@@ -125,23 +108,22 @@
                 });
 
                 const data = await res.json();
-                console.log('Ответ сервера при входе:', data); // Для отладки
-
                 if (!data.success) {
-                    console.log('Ошибка входа:', data.error);
-                    alert(data.error || "Неизвестная ошибка при входе");
+                    alert(data.error || "Ошибка входа");
                     return;
                 }
 
-                console.log('Успешный вход:', data);
-                alert("Вход выполнен успешно");
+                alert("Вход успешен");
+
+                // Сохранение данных пользователя
                 localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+
                 window.location.href = "index2.html";
             } catch (error) {
-                console.error('Ошибка подключения:', error);
-                alert("Ошибка подключения к серверу: " + error.message);
+                alert("Ошибка сервера: " + error.message);
             }
-        };
+        }
     </script>
 </body>
 </html>
