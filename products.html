@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <title>Menu</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="profile.html"><i class='bx bx-user'></i>Profile</a></li>
+                <li><a href="index2.html">Main </a></li>
+                <li><a href="#">Menu</a>
+                    <ul>
+                        <li><a href="products2.html">Menu Cafe</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html"> Contacts </a></li>
+                <li><a href="ctaf.html">Staff </a></li>
+                <li><a href="index.html">Exit <i class='bx bx-log-out-circle'></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article>
+            <h2>Menu Bar</h2>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+    </style>
+    <title>Menu</title>
+</head>
+<body>
+   <h3>CLASSIC</h3>
+            <div class="menu1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drink</th>
+                            <th>Volume</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Espresso</td>
+                            <td>40ml</td>
+                            <td class="price">4.5p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Espresso', 4.5, '40ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Americano</td>
+                            <td>200ml</td>
+                            <td class="price">4.5p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Americano', 4.5, '200ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Capuccino</td>
+                            <td>200/300ml</td>
+                            <td class="price">4.5p/6p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Capuccino', 4.5, '200ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Latte</td>
+                            <td>200/300ml</td>
+                            <td class="price">4.5p/6p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Latte', 4.5, '200ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Flat White</td>
+                            <td>200ml</td>
+                            <td class="price">6p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Flat White', 6, '200ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Cocoa</td>
+                            <td>300ml</td>
+                            <td class="price">6p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Cocoa', 6, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Filter Coffee</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Filter Coffee', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Pour Over</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Pour Over', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Raf Coffee</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Raf Coffee', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Halva Raf</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Halva Raf', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Raspberry Latte</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Raspberry Latte', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Matcha</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Matcha', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Matcha Pear</td>
+                            <td>300ml</td>
+                            <td class="price">9p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Matcha Pear', 9, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Matcha Strawberry-Cream</td>
+                            <td>300ml</td>
+                            <td class="price">9p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Matcha Strawberry-Cream', 9, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Melon-Lavender Raf</td>
+                            <td>300ml</td>
+                            <td class="price">8p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Melon-Lavender Raf', 8, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        
+                        <!-- Special section -->
+                        <h3>SPECIAL</h3>
+                        <div class="menu1"> 
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Drink</th>
+                                        <th>Volume</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Halva Raf</td>
+                                        <td>300ml</td>
+                                        <td class="price">7p</td>
+                                        <td><input type="number" value="0" min="0" /></td>
+                                        <td><button onclick="addToCart('Halva Raf', 7, '300ml')">Добавить в корзину</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Raspberry Latte</td>
+                                        <td>300ml</td>
+                                        <td class="price">7p</td>
+                                        <td><input type="number" value="0" min="0" /></td>
+                                        <td><button onclick="addToCart('Raspberry Latte', 7, '300ml')">Добавить в корзину</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Matcha</td>
+                                        <td>300ml</td>
+                                        <td class="price">7p</td>
+                                        <td><input type="number" value="0" min="0" /></td>
+                                        <td><button onclick="addToCart('Matcha', 7, '300ml')">Добавить в корзину</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Matcha Pear</td>
+                                        <td>300ml</td>
+                                        <td class="price">9p</td>
+                                        <td><input type="number" value="0" min="0" /></td>
+                                        <td><button onclick="addToCart('Matcha Pear', 9, '300ml')">Добавить в корзину</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Matcha Strawberry-Cream</td>
+                                        <td>300ml</td>
+                                        <td class="price">9p</td>
+                                        <td><input type="number" value="0" min="0" /></td>
+                                        <td><button onclick="addToCart('Matcha Strawberry-Cream', 9, '300ml')">Добавить в корзину</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Melon-Lavender Raf</td>
+                                        <td>300ml</td>
+                                        <td class="price">8p</td>
+                                        <td><input type="number" value="0" min="0" /></td>
+                                        <td><button onclick="addToCart('Melon-Lavender Raf', 8, '300ml')">Добавить в корзину</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>  <!-- The same pattern should be repeated for other sections like ICE, SMOOTHIE, etc. -->
+                        
+                    </tbody>
+                </table>
+            </div>
+            <h3>ICE</h3>
+            <div class="menu1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drink</th>
+                            <th>Volume</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ice Latte</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Ice Latte', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Peach Latte</td>
+                            <td>300ml</td>
+                            <td class="price">9p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Peach Latte', 9, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <tr>
+                                <td>Bumble Peach-Cream</td>
+                                <td>300ml</td>
+                                <td class="price">9p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Bumble Peach-Cream', 9, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                            <tr>
+                                <td>Espresso Tonic</td>
+                                <td>300ml</td>
+                                <td class="price">7p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Espresso Tonic', 7, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                            <tr>
+                                <td>Orange Bumble</td>
+                                <td>300ml</td>
+                                <td class="price">7p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Orange Bumble', 7, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                            <tr>
+                                <td>Ice Matcha</td>
+                                <td>300ml</td>
+                                <td class="price">7p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Ice Matcha', 7, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                            <tr>
+                                <td>Matcha Peach-Cream</td>
+                                <td>300ml</td>
+                                <td class="price">9p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Matcha Peach-Cream', 9, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                            <tr>
+                                <td>Easy Matcha</td>
+                                <td>300ml</td>
+                                <td class="price">9p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Easy Matcha', 9, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                            <tr>
+                                <td>Matcha Tonic</td>
+                                <td>300ml</td>
+                                <td class="price">7p</td>
+                                <td><input type="number" value="0" min="0" /></td>
+                                <td><button onclick="addToCart('Matcha Tonic', 7, '300ml')">Добавить в корзину</button></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>NEW ICE</h3>
+            <div class="menu1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Drink</th>
+                            <th>Volume</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Frappuccino</td>
+                            <td>300ml</td>
+                            <td class="price">8p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Frappuccino', 8, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Green Elixir</td>
+                            <td>300ml</td>
+                            <td class="price">8p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Green Elixir', 8, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Affogato Philadelphia</td>
+                            <td>300ml</td>
+                            <td class="price">10p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Affogato Philadelphia', 10, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Chill Matcha Ice</td>
+                            <td>300ml</td>
+                            <td class="price">9.5p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Chill Matcha Ice', 9.5, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Tropical Matcha</td>
+                            <td>300ml</td>
+                            <td class="price">9p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Tropical Matcha', 9, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Cold Brew</td>
+                            <td>300ml</td>
+                            <td class="price">7p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Cold Brew', 7, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                        <tr>
+                            <td>Vanilla Nitro Coffee</td>
+                            <td>300ml</td>
+                            <td class="price">7.5p</td>
+                            <td><input type="number" value="0" min="0" /></td>
+                            <td><button onclick="addToCart('Vanilla Nitro Coffee', 7.5, '300ml')">Добавить в корзину</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>SMOOTHIE</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Drink</th>
+                <th>Volume</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+            <tr>
+                <td>Kiwi-Banana</td>
+                <td>300ml</td>
+                <td class="price">9.5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Kiwi-Banana', 9.5, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Cherry-Banana</td>
+                <td>300ml</td>
+                <td class="price">9.5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Cherry-Banana', 9.5, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Strawberry-Banana</td>
+                <td>300ml</td>
+                <td class="price">9.5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Strawberry-Banana', 9.5, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Blackberry-Banana</td>
+                <td>300ml</td>
+                <td class="price">9.5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Blackberry-Banana', 9.5, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Pineapple-Passionfruit Lemonade</td>
+                <td>300ml</td>
+                <td class="price">8p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Pineapple-Passionfruit Lemonade', 8, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Cherry-Blackberry Lemonade</td>
+                <td>300ml</td>
+                <td class="price">8p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Cherry-Blackberry Lemonade', 8, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Kiwi-Lavender Lemonade</td>
+                <td>300ml</td>
+                <td class="price">8p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Kiwi-Lavender Lemonade', 8, '300ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Pineapple Lemonade</td>
+                <td>300ml</td>
+                <td class="price">12p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Pineapple Lemonade', 12, '300ml')">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>TEA</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Drink</th>
+                <th>Volume</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Milk Oolong</td>
+                <td>400ml</td>
+                <td class="price">5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Milk Oolong', 5, '400ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Black Tea</td>
+                <td>400ml</td>
+                <td class="price">5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Black Tea', 5, '400ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Fruit Tea</td>
+                <td>400ml</td>
+                <td class="price">5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Fruit Tea', 5, '400ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Herbal Tea</td>
+                <td>400ml</td>
+                <td class="price">5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Herbal Tea', 5, '400ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Buckwheat Tea</td>
+                <td>400ml</td>
+                <td class="price">5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Buckwheat Tea', 5, '400ml')">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3>SPECIAL TEA</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Drink</th>
+                <th>Volume</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sea Buckthorn Tea</td>
+                <td>400ml</td>
+                <td class="price">13p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Sea Buckthorn Tea', 13, '400ml')">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Cranberry-Juniper Tea</td>
+                <td>400ml</td>
+                <td class="price">13p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Cranberry-Juniper Tea', 13, '400ml')">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    function addToCart(name, price, volume) {
+        const row = event.target.closest('tr'); // ищем строку таблицы
+        const quantityInput = row.querySelector('input[type="number"]');
+        const quantity = parseInt(quantityInput.value);
+    
+        if (!quantity || quantity <= 0) {
+            alert("Укажите количество товара");
+            return;
+        }
+    
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+        // Проверка, есть ли уже такой товар
+        const existingItem = cart.find(item => item.name === name && item.volume === volume);
+    
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                name,
+                price,
+                volume,
+                quantity
+            });
+        }
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Товар добавлен в корзину!");
+    }
+    </script>    
+</body>
+</html>

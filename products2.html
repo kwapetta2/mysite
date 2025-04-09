@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <title>Menu</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="profile.html"><i class='bx bx-user'></i> Profile</a></li>
+                <li><a href="index2.html">Main </a></li>
+                <li><a href="#">Menu</a>
+                    <ul>
+                        <li><a href="products.html">Menu Bar</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html"> Contacts </a></li>
+                <li><a href="ctaf.html">Staff </a></li>
+                <li><a href="index.html">Exit <i class='bx bx-log-out-circle'></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article>
+            
+            <h2>Menu Cafe</h2>
+<h3 class="section-title">BREAKFAST</h3>
+
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Full English Breakfast</td>
+                <td>Tomatoes, bacon, sausages, eggs, beans, brioche, mushrooms</td>
+                <td class="price">19p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Full English Breakfast', 19)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Scrambled Eggs with Shrimp</td>
+                <td>Cucumber, lemon juice, green oil, shrimp, salad, cream cheese, eggs, cream</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Scrambled Eggs with Shrimp', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Scrambled Eggs with Eel</td>
+                <td>Eggs, cream, eel, cream cheese, red cabbage in spicy sauce, fried onion</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Scrambled Eggs with Eel', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Brioche with Salmon</td>
+                <td>Brioche, salmon</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Brioche with Salmon', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Chicken Sandwich</td>
+                <td>Brioche, chicken fillet, bacon, cucumber, Caesar sauce, eggs</td>
+                <td class="price">16p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Chicken Sandwich', 16)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Sweet Sandwich</td>
+                <td>Brioche, cream with boiled condensed milk, banana, peanuts, strawberries</td>
+                <td class="price">14p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Sweet Sandwich', 14)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Oatmeal with Banana and Caramel</td>
+                <td>Oats, banana, caramel</td>
+                <td class="price">6p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Oatmeal with Banana and Caramel', 6)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Oatmeal with Kiwi and Jam</td>
+                <td>Oats, kiwi, jam</td>
+                <td class="price">6p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Oatmeal with Kiwi and Jam', 6)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Syrniki with Salted Caramel and Peanuts</td>
+                <td>Syrniki, salted caramel, peanuts</td>
+                <td class="price">9.5p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Syrniki with Salted Caramel and Peanuts', 9.5)">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- SNACKS Section -->
+<h3>SNACKS</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Beef Tartare</td>
+                <td>Beef tenderloin, capers, parmesan, sauce, brioche</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Beef Tartare', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Tuna Crudo with Tomato</td>
+                <td>Tuna, tomatoes, sauce, sesame, cilantro</td>
+                <td class="price">18p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Tuna Crudo with Tomato', 18)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Tuna Sashimi with Mashed Cucumbers</td>
+                <td>Tuna, mashed cucumbers, sesame, cilantro, sauce</td>
+                <td class="price">16p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Tuna Sashimi with Mashed Cucumbers', 16)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Arancini with Cheese</td>
+                <td>Rice, cheese</td>
+                <td class="price">8p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Arancini with Cheese', 8)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>French Fries</td>
+                <td>Potatoes</td>
+                <td class="price">7p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('French Fries', 7)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Onion Rings</td>
+                <td>Onion, breadcrumbs</td>
+                <td class="price">9p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Onion Rings', 9)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Chicken Nuggets</td>
+                <td>Chicken fillet, breadcrumbs</td>
+                <td class="price">7p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Chicken Nuggets', 7)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Mashed Cucumbers</td>
+                <td>Cucumbers, sauce</td>
+                <td class="price">12p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Mashed Cucumbers', 12)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Sweet Potato Fries</td>
+                <td>Sweet potatoes</td>
+                <td class="price">15p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Sweet Potato Fries', 15)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Assorted Sauces</td>
+                <td>(ask barista for flavors)</td>
+                <td class="price">1p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Assorted Sauces', 1)">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- SALADS Section -->
+<h3>SALADS</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tomatoes with Aromatic Oil and Pumpkin Seeds</td>
+                <td>Tomatoes, aromatic oil, pumpkin seeds</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Tomatoes with Aromatic Oil and Pumpkin Seeds', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Caesar Salad with Chicken</td>
+                <td>Lettuce, cherry tomatoes, chicken fillet, parmesan, Caesar sauce, croutons</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Caesar Salad with Chicken', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Green Salad with Shrimp</td>
+                <td>Green salad, shrimp, tomatoes, cucumbers, sauce</td>
+                <td class="price">16p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Green Salad with Shrimp', 16)">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- POKE BOWLS Section -->
+<h3>POKE BOWLS</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Salmon Poke Bowl</td>
+                <td>Rice, chuka, edamame beans, red cabbage, mashed cucumbers, spicy sauce, cilantro, sesame</td>
+                <td class="price">20p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Salmon Poke Bowl', 20)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Tuna Poke Bowl</td>
+                <td>Tuna, rice, mango, mashed cucumbers, chuka, edamame beans, wasabi sauce, sesame, cilantro</td>
+                <td class="price">19p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Tuna Poke Bowl', 19)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Shrimp Poke Bowl</td>
+                <td>Shrimp, cucumber, chuka, avocado, edamame beans, sauce, sesame, rice, mango, cilantro</td>
+                <td class="price">20p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Shrimp Poke Bowl', 20)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Chicken Poke Bowl</td>
+                <td>Chicken fillet, cherry tomatoes, lettuce, eggs, Caesar sauce, croutons, rice, parmesan</td>
+                <td class="price">17p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Chicken Poke Bowl', 17)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Eel Poke Bowl</td>
+                <td>Rice, red cabbage, mashed cucumbers, chuka, edamame beans, eel, sauce, fried onion</td>
+                <td class="price">20p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Eel Poke Bowl', 20)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Royal Poke</td>
+                <td>Rice, tuna, salmon, edamame beans, cucumber, mango, spicy sauce</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Royal Poke', 22)">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- MAIN DISHES Section -->
+<h3>MAIN DISHES</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ptitim with Pesto and Shrimp</td>
+                <td>Pesto, spinach, cherry tomatoes, shrimp, ptitim, garlic</td>
+                <td class="price">22p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Ptitim with Pesto and Shrimp', 22)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Ptitim with Bacon</td>
+                <td>Bacon, cream, ptitim, parmesan</td>
+                <td class="price">16p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Ptitim with Bacon', 16)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Ptitim with Chicken Fillet and Mushrooms</td>
+                <td>Ptitim, mushrooms, chicken fillet, cream, parmesan, pepper</td>
+                <td class="price">18p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Ptitim with Chicken Fillet and Mushrooms', 18)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Teriyaki Eel with Mashed Potatoes</td>
+                <td>Mashed potatoes, eel, fried onion</td>
+                <td class="price">25p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Teriyaki Eel with Mashed Potatoes', 25)">Добавить в корзину</button></td>
+            </tr>    
+        </tbody>
+    </table>
+</div>
+
+<!-- SOUPS Section -->
+<h3>SOUPS</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Ingredients</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cream Soup</td>
+                <td>(check availability at the bar)</td>
+                <td class="price">12p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Cream Soup', 12)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Ramen</td>
+                <td>Broth, chicken fillet, noodles, leek, carrot, nori</td>
+                <td class="price">16p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Ramen', 16)">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- DESSERTS Section -->
+<h3>DESSERTS</h3>
+<div class="menu1">
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Brownie</td>
+                <td class="price">11p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Brownie', 11)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Tiramisu</td>
+                <td class="price">10p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Tiramisu', 10)">Добавить в корзину</button></td>
+            </tr>
+            <tr>
+                <td>Basque Cheesecake</td>
+                <td class="price">10p</td>
+                <td><input type="number" value="0" min="0" /></td>
+                <td><button onclick="addToCart('Basque Cheesecake', 10)">Добавить в корзину</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+ </article>        
+    </section>
+</body>
+</html>
