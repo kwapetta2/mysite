@@ -1,45 +1,43 @@
 const sqlite3 = require('sqlite3').verbose();
 
-const initializeDatabase = async () => {
-    const dbPath = 'C:/Users/Анита/Desktop/site/users.db'; // Укажите ваш путь
+function initializeDatabase() {
+    const dbPath = './users.db';
     console.log('A. Попытка открыть базу данных по пути:', dbPath);
 
-    const db = await new Promise((resolve, reject) => {
-        const dbInstance = new sqlite3.Database(dbPath, (err) => {
-            if (err) {
-                console.error('B. Ошибка подключения к базе данных:', err.message);
-                reject(err);
-            } else {
-                console.log('C. Подключение к базе данных установлено');
-                resolve(dbInstance);
-            }
-        });
+    const db = new sqlite3.Database(dbPath, (err) => {
+        if (err) {
+            console.error('B. Ошибка подключения к базе данных:', err.message);
+            throw err;
+        }
+        console.log('C. Подключение к базе данных установлено');
     });
 
-    console.log('D. db после создания:', db, 'typeof db.run:', typeof db.run, 'typeof db.close:', typeof db.close);
-    if (!db || typeof db.run !== 'function' || typeof db.close !== 'function') {
-        throw new Error('Объект базы данных не инициализирован корректно');
-    }
-
-    await new Promise((resolve, reject) => {
+    db.serialize(() => {
         db.run(`
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                email TEXT UNIQUE,
-                password TEXT
-            )`, (err) => {
+                name TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                password TEXT NOT NULL
+            )
+        `, (err) => {
             if (err) {
-                console.error('E. Ошибка при создании таблицы:', err.message);
-                reject(err);
+                console.error('D. Ошибка при создании таблицы:', err.message);
             } else {
-                console.log('F. Таблица пользователей успешно создана (или уже существует)');
-                resolve();
+                console.log('E. Таблица users успешно создана (или уже существует)');
+            }
+        });
+
+        db.all("PRAGMA table_info(users)", (err, rows) => {
+            if (err) {
+                console.error('F. Ошибка при получении структуры таблицы:', err.message);
+            } else {
+                console.log('G. Структура таблицы users:', rows);
             }
         });
     });
 
     return db;
-};
+}
 
 module.exports = initializeDatabase;
