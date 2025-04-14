@@ -43,22 +43,40 @@
     article p {
       margin: 0;
     }
+
+    /* Радиокнопки и скрытие всех слайдов */
+    input[type="radio"] {
+      display: none;
+    }
+
+    .carousel-item {
+      display: none;
+    }
+
+    /* Показать только активный слайд */
+    input#slide1:checked ~ .carousel-inner .carousel-item:nth-child(1),
+    input#slide2:checked ~ .carousel-inner .carousel-item:nth-child(2),
+    input#slide3:checked ~ .carousel-inner .carousel-item:nth-child(3) {
+      display: block;
+    }
+
+    /* Стрелки для навигации */
     .carousel-arrow {
       position: absolute;
       top: 50%;
-      transform: translateY(-70%);
+      transform: translateY(-50%);
       font-size: 2rem;
-      background-color:rgba(188, 188, 188, 0.227);
-      color: rgba(255, 255, 255, 0.474);
+      background-color: rgba(188, 188, 188, 0.5);
+      color: rgba(255, 255, 255, 0.7);
       border: none;
       padding: 10px;
       cursor: pointer;
-      z-index: 10;
-      border-radius: 0; 
+      z-index: 5;
+      border-radius: 50%;
     }
 
     .carousel-arrow:hover {
-      background-color: rgb(107, 107, 107);
+      background-color: rgba(107, 107, 107, 0.7);
     }
 
     .arrow-left {
@@ -68,6 +86,7 @@
     .arrow-right {
       right: 10px;
     }
+
   </style>
 </head>
 <body>
@@ -84,6 +103,8 @@
         </li>
         <li><a href="contact.html">Contacts</a></li>
         <li><a href="ctaf.html">Staff</a></li>
+        <li><a href="gal.html">Gallery</a></li>
+        <li><a href="movie_night.html">Movie</a></li>
         <li><a href="index.html">Exit <i class='bx bx-log-out-circle'></i></a></li>
       </ul>
     </nav>
@@ -93,7 +114,12 @@
     <h2>Our News!</h2>
 
     <div class="carousel">
-      <!-- Стрелки -->
+      <!-- Радиокнопки для навигации -->
+      <input type="radio" name="carousel" id="slide1" checked />
+      <input type="radio" name="carousel" id="slide2" />
+      <input type="radio" name="carousel" id="slide3" />
+
+      <!-- Стрелки для навигации -->
       <button class="carousel-arrow arrow-left" onclick="goToSlide(currentIndex - 1)">&#10094;</button>
       <button class="carousel-arrow arrow-right" onclick="goToSlide(currentIndex + 1)">&#10095;</button>
 
@@ -128,50 +154,16 @@
     let currentIndex = 0;
 
     function goToSlide(index) {
-      const carouselInner = document.querySelector('.carousel-inner');
-      const items = document.querySelectorAll('.carousel-item');
-      if (index < 0) index = items.length - 1;
-      if (index >= items.length) index = 0;
+      const slides = document.querySelectorAll("input[name='carousel']");
+      if (index < 0) {
+        index = slides.length - 1;
+      }
+      if (index >= slides.length) {
+        index = 0;
+      }
+      slides[index].checked = true;
       currentIndex = index;
-      carouselInner.style.transform = `translateX(-${index * 100}%)`;
     }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("news.json")
-        .then(response => {
-          if (!response.ok) throw new Error("Failed to load news.");
-          return response.json();
-        })
-        .then(data => {
-          const carouselInner = document.getElementById("carousel-inner");
-
-          data.forEach(item => {
-            const carouselItem = document.createElement("div");
-            carouselItem.className = "carousel-item";
-
-            const article = document.createElement("article");
-
-            const img = document.createElement("img");
-            img.src = item.image;
-            img.alt = item.alt || "News image";
-
-            const title = document.createElement("h3");
-            title.textContent = item.title;
-
-            const description = document.createElement("p");
-            description.textContent = item.description;
-
-            article.appendChild(img);
-            article.appendChild(title);
-            article.appendChild(description);
-            carouselItem.appendChild(article);
-            carouselInner.appendChild(carouselItem);
-          });
-        })
-        .catch(error => {
-          console.error("News loading error:", error);
-        });
-    });
   </script>
 </body>
 </html>
