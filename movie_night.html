@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Night Posters</title>
+  <link rel="stylesheet" href="style6.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="profile.html"><i class='bx bx-user'></i> Profile</a></li>
+        <li><a href="index2.html">Main</a></li>
+        <li><a href="#">Menu</a>
+          <ul>
+            <li><a href="products.html">Menu Bar</a></li>
+            <li><a href="products2.html">Menu Cafe</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="ctaf.html">Staff</a></li>
+        <li><a href="gal.html">Gallery</a></li>
+        <li><a href="#" onclick="logout(); return false;">Exit <i class='bx bx-log-out-circle'></i></a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="movies-container">
+    <!-- Movie Card 1 -->
+    <div class="movie-card">
+      <div class="movie-poster">
+        <img src="sp.jpg" alt="Movie 1 Poster">
+      </div>
+      <div class="movie-info">
+        <h3>Space Odyssey</h3>
+        <p>An epic sci-fi adventure through the cosmos, exploring humanity's place in the universe.</p>
+        <a href="#" class="btn" onclick="openModal('Space Odyssey'); return false;"><i class='bx bx-chair'></i> Бронь столика</a>
+      </div>
+    </div>
+
+    <!-- Movie Card 2 -->
+    <div class="movie-card">
+        <div class="movie-poster">
+          <img src="love.png" alt="Movie 2 Poster">
+        </div>
+        <div class="movie-info">
+          <h3>Love in Time</h3>
+          <p>A heartwarming romance that transcends time and space.</p>
+          <a href="#" class="btn" onclick="openModal('Love in Time'); return false;"><i class='bx bx-chair'></i> Бронь столика</a>
+        </div>
+      </div>
+  
+
+    <!-- Movie Card 3 -->
+    <div class="movie-card">
+        <div class="movie-poster">
+          <img src="sup.jpg" alt="Movie 3 Poster">
+        </div>
+        <div class="movie-info">
+          <h3>Superhero Saga</h3>
+          <p>An action-packed tale of heroes saving the world from chaos.</p>
+          <a href="#" class="btn" onclick="openModal('Superhero Saga'); return false;"><i class='bx bx-chair'></i> Бронь столика</a>
+        </div>
+      </div>
+    
+    
+    <!-- Movie Card 4 -->
+    <div class="movie-card">
+        <div class="movie-poster">
+          <img src="man.jpg" alt="Movie 4 Poster">
+        </div>
+        <div class="movie-info">
+          <h3>Mystery Manor</h3>
+          <p>A thrilling detective story unraveling secrets in a haunted mansion.</p>
+          <a href="#" class="btn" onclick="openModal('Mystery Manor'); return false;"><i class='bx bx-chair'></i> Бронь столика</a>
+        </div>
+      </div>
+  </div>
+  <!-- Modal for Table Reservation -->
+  <div id="reservationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2>Бронь столика для <span id="movieTitle"></span></h2>
+      <form id="reservationForm">
+        <label for="guests">Количество человек:</label>
+        <select id="guests" required>
+          <option value="" disabled selected>Выберите количество</option>
+          <option value="1">1 человек</option>
+          <option value="2">2 человека</option>
+          <option value="3">3 человека</option>
+          <option value="4">4 человека</option>
+          <option value="5+">5+ человек</option>
+        </select>
+
+        <label for="time">Время сеанса:</label>
+        <select id="time" required>
+          <option value="" disabled selected>Выберите время</option>
+          <option value="18:00">18:00</option>
+          <option value="20:00">20:00</option>
+          <option value="22:00">22:00</option>
+        </select>
+
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" placeholder="Введите имя" required>
+
+        <label for="phone">Номер телефона:</label>
+        <input type="tel" id="phone" placeholder="+375*********" required>
+
+        <button type="submit">Забронировать</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    // Logout function
+    function logout() {
+      localStorage.removeItem("user");
+      localStorage.removeItem("cart");
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
+    }
+
+    // Открытие модального окна
+    function openModal(movieTitle) {
+      document.getElementById('movieTitle').textContent = movieTitle;
+      document.getElementById('reservationModal').style.display = 'flex';
+    }
+
+    // Закрытие модального окна
+    function closeModal() {
+      document.getElementById('reservationModal').style.display = 'none';
+      document.getElementById('reservationForm').reset();
+    }
+
+    // Обработка отправки формы
+    document.getElementById('reservationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const movie = document.getElementById('movieTitle').textContent;
+      const guests = document.getElementById('guests').value;
+      const time = document.getElementById('time').value;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+
+      // Простая валидация телефона
+      const phoneRegex = /^\+?\d{9,}$/;
+      if (!phoneRegex.test(phone)) {
+        alert('Пожалуйста, введите корректный номер телефона (например, +375*********).');
+        return;
+      }
+
+      alert(`Бронь подтверждена!\nФильм: ${movie}\nКоличество человек: ${guests}\nВремя: ${time}\nИмя: ${name}\nТелефон: ${phone}`);
+      closeModal();
+    });
+
+    // Закрытие модального окна при клике вне формы
+    window.onclick = function(event) {
+      const modal = document.getElementById('reservationModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
+</body>
+</html>
