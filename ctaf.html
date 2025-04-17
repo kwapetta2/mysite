@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru">z
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,8 @@
                     </ul>
                 </li>
                 <li><a href="contact.html"> Contacts </a></li>
+                <li><a href="gal.html">Gallery</a></li>
+                <li><a href="movie_night.html">Movie</a></li>
                 <li><a href="index.html">Exit <i class='bx bx-log-out-circle'></i></a></li>
             </ul>
         </nav>
@@ -83,9 +85,48 @@
                 <p>Crafts delicious croissants and dreams up new dessert recipes.</p>
                 <p>Master of desserts and expert in coffee snacks.</p>
             </div>
-           
-            
+            <div class="vacancy-carousel">
+                <h2>Vacancies</h2>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev">&#10094;</button>
+                    <div class="carousel">
+                        <div class="vacancy-card">
+                            <h3>Barista</h3>
+                            <p>Looking for an energetic person with at least 1 year of experience.</p>
+                        </div>
+                        <div class="vacancy-card">
+                            <h3>Chef Assistant</h3>
+                            <p>Assist in dessert preparation. Experience is a plus!</p>
+                        </div>
+                        <div class="vacancy-card">
+                            <h3>Cleaning Staff</h3>
+                            <p>Morning and evening shifts available.</p>
+                        </div>
+                        <div class="vacancy-card">
+                            <h3>Administrator</h3>
+                            <p>Customer service skills and basic computer knowledge required.</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next">&#10095;</button>
+                </div>
+            </div>            
         </div>
     </div>
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const vacancyCards = document.querySelectorAll('.vacancy-card');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let index = 0;
+    
+        function showSlide(i) {
+            index = (i + vacancyCards.length) % vacancyCards.length;
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+    
+        prevBtn.addEventListener('click', () => showSlide(index - 1));
+        nextBtn.addEventListener('click', () => showSlide(index + 1));
+    </script>
+    
 </body>
 </html>
