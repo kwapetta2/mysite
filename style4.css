@@ -379,3 +379,60 @@ h1 {
         font-size: 1.5rem;
     }
 }
+.vacancy-carousel {
+    margin: 50px auto;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.vacancy-card {
+    /* удаляем margin */
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    color: #000;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
