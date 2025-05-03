@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">z
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,6 @@
     <div class="container">
         <h1>Our Team</h1>
         <div class="staff-list">
-            <!-- Employee Card 1 -->
             
             <div class="staff-card">
                 <img src="vil.jpg" alt="Wilhelm">
@@ -114,18 +113,43 @@
     </div>
     <script>
         const carousel = document.querySelector('.carousel');
-        const vacancyCards = document.querySelectorAll('.vacancy-card');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        let index = 0;
-    
-        function showSlide(i) {
-            index = (i + vacancyCards.length) % vacancyCards.length;
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        }
-    
-        prevBtn.addEventListener('click', () => showSlide(index - 1));
-        nextBtn.addEventListener('click', () => showSlide(index + 1));
+    const cards = document.querySelectorAll('.vacancy-card');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentIndex = 0;
+    const totalCards = cards.length;
+
+    function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        cards.forEach((card, index) => {
+            card.classList.toggle('active', index === currentIndex);
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalCards;
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        updateCarousel();
+    });
+
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+    });
+
+    updateCarousel();
+;
     </script>
     
 </body>
