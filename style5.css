@@ -82,9 +82,10 @@
             grid-template-columns: repeat(3, 1fr); /* Оставлено 3 столбца */
             gap: 25px;
             padding: 15px;
-        }
-
-        .gallery-item {
+            margin-top: 80px; /* Добавлен отступ сверху, чтобы контент не перекрывал меню */
+          }
+      
+          .gallery-item {
             position: relative;
             background-color: #e4dedd;
             border: 8px solid #918282;
@@ -93,45 +94,46 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
-        }
-
-        .gallery-item:hover {
+          }
+      
+          .gallery-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
+          }
+      
+          .gallery-item img {
             width: 100%;
             height: 350px; /* Увеличена высота для пропорциональности с шириной */
             object-fit: cover;
             border-bottom: 1px solid #ddd;
             transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
+          }
+      
+          .gallery-item:hover img {
             transform: scale(1.05);
-        }
-
-        .caption {
+          }
+      
+          .caption {
             padding: 20px;
             text-align: center;
             color: #333;
             background: rgba(228, 222, 221, 0.9);
             position: relative;
-        }
-
-        .caption h3 {
+          }
+      
+          .caption h3 {
             font-size: 1.6em;
             margin-bottom: 8px;
             font-weight: 600;
-        }
-
-        .caption p {
+          }
+      
+          .caption p {
             font-size: 1.1em;
             color: #666;
-        }
-
-        footer {
+          }
+      
+          /* Стили футера */
+          footer {
             background-color: rgb(80, 70, 70);
             color: white;
             text-align: center;
@@ -141,33 +143,48 @@
             left: 0;
             height: 100px;
             padding: 20px;
-        }
-
-        @keyframes fadeIn {
+          }
+      
+          /* Анимация появления */
+          @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 900px) { /* Изменён порог для соответствия новому max-width */
+          }
+      
+          /* Медиазапрос для планшетов */
+          @media (max-width: 900px) { 
             .gallery {
-                grid-template-columns: repeat(2, 1fr); /* 2 столбца на планшетах */
+              grid-template-columns: repeat(2, 1fr); /* 2 столбца на планшетах */
             }
             
             h1 {
-                font-size: 2em;
+              font-size: 2em;
             }
             
             .gallery-item img {
-                height: 300px; /* Уменьшена высота для адаптивности */
+              height: 300px; /* Уменьшена высота для адаптивности */
             }
-        }
-
-        @media (max-width: 600px) {
+          }
+      
+          /* Медиазапрос для маленьких экранов */
+          @media (max-width: 600px) {
             .gallery {
-                grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
+              grid-template-columns: 1fr; /* 1 столбец на маленьких экранах */
             }
             
             .gallery-item img {
-                height: 250px; /* Ещё меньше для маленьких экранов */
+              height: 250px; /* Ещё меньше для маленьких экранов */
             }
-        }
+          }
+          
+          footer {
+            background-color: rgb(49, 38, 38);
+            color: white;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            height: 70px;
+            padding: 6px;
+          }
