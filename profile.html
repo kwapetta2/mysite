@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="style4.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="index2.html">Main</a></li>
+      <li><a href="#">Menu</a>
+        <ul>
+          <li><a href="products.html">Menu Bar</a></li>
+          <li><a href="products2.html">Menu Cafe</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contacts</a></li>
+      <li><a href="ctaf.html">Staff</a></li>
+      <li><a href="gal.html">Gallery</a></li>
+      <li><a href="movie_night.html">Movie</a></li>
+      <li><a href="#" onclick="logout(); return false;">Logout <i class='bx bx-log-out-circle'></i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container1">
+  <!-- User Information -->
+  <div class="profile-info">
+    <h2>Hello, <span id="userName">Loading...</span></h2>
+    <p>Email: <span id="userEmail">Loading...</span></p>
+  </div>
+
+  <!-- Shopping Cart -->
+  <div class="cart">
+    <h3>Shopping Cart</h3>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="cartItemsContainer"></tbody>
+    </table>
+    <div id="cartTotal">
+      <p><strong>Total Amount: </strong><span id="totalAmount">0.00</span></p>
+    </div>
+
+    <!-- Buttons for clearing cart, card payment, and pay on delivery -->
+    <div class="cart-actions">
+      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="proceedToPayment()">Pay by Card</button>
+      <button onclick="proceedToDelivery()">Pay on Delivery</button>
+    </div>
+  </div>
+</div>
+
+<!-- Card Payment Modal -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <div class="modal-header">
+      <h2>Enter Card Details</h2>
+    </div>
+    <form id="paymentForm">
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" class="form-input" placeholder="XXXX XXXX XXXX XXXX" required>
+
+      <label for="expiryDate">Expiry Date:</label>
+      <input type="text" id="expiryDate" class="form-input" placeholder="MM/YY" required>
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" class="form-input" placeholder="XXX" required>
+
+      <div class="modal-footer">
+        <button type="submit" class="form-button">Pay</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Pay on Delivery Modal -->
+<div id="deliveryModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeDeliveryModal()">×</span>
+    <div class="modal-header">
+      <h2>Enter Delivery Address</h2>
+    </div>
+    <form id="deliveryForm">
+      <label for="deliveryAddress">Delivery Address:</label>
+      <textarea id="deliveryAddress" class="form-input" placeholder="Enter your full address" required></textarea>
+
+      <div class="modal-footer">
+        <button type="submit" class="form-button">Confirm Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// Retrieve user and cart data from localStorage
+const user = JSON.parse(localStorage.getItem("user"));
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// If user is not found, redirect to login page
+if (!user) {
+  window.location.href = "index.html";
+}
+
+// Display user information
+const userName = user.nickname || user.name || "Unknown";
+const userEmail = user.email || "Unknown";
+
+document.getElementById("userName").textContent = userName;
+document.getElementById("userEmail").textContent = userEmail;
+
+// Display user's cart
+const cartItemsContainer = document.getElementById("cartItemsContainer");
+let totalAmount = 0;
+
+if (cart.length === 0) {
+  cartItemsContainer.innerHTML = '<tr><td colspan="4">Cart is empty</td></tr>';
+} else {
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.name} (${item.volume || ""})</td>
+      <td>${item.price.toFixed(2)}</td>
+      <td>${item.quantity}</td>
+      <td>${(item.price * item.quantity).toFixed(2)}</td>
+    `;
+    cartItemsContainer.appendChild(row);
+    totalAmount += item.price * item.quantity;
+  });
+}
+
+// Update total amount
+document.getElementById("totalAmount").textContent = totalAmount.toFixed(2);
+
+// Logout function
+function logout() {
+  localStorage.removeItem("user");
+  localStorage.removeItem("cart");
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+}
+
+// Clear cart function
+function clearCart() {
+  localStorage.removeItem("cart");
+  location.reload(); // Refresh page to display empty cart
+}
+
+// Proceed to card payment function
+function proceedToPayment() {
+  if (cart.length === 0) {
+    alert("Cart is empty! Add items to the cart.");
+    return;
+  }
+  // Show card payment modal
+  document.getElementById("paymentModal").style.display = "block";
+}
+
+// Proceed to pay on delivery function
+function proceedToDelivery() {
+  if (cart.length === 0) {
+    alert("Cart is empty! Add items to the cart.");
+    return;
+  }
+  // Show delivery modal
+  document.getElementById("deliveryModal").style.display = "block";
+}
+
+// Close card payment modal function
+function closeModal() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+
+// Close delivery modal function
+function closeDeliveryModal() {
+  document.getElementById("deliveryModal").style.display = "none";
+}
+
+// Basic card validation
+function validateCardDetails(cardNumber, expiryDate, cvv) {
+  // Remove spaces and non-digits from card number
+  const cleanCardNumber = cardNumber.replace(/\D/g, '');
+  // Basic card number validation (16 digits)
+  const cardNumberRegex = /^\d{16}$/;
+  
+  // Expiry date validation (MM/YY format)
+  const expiryRegex = /^(0[1-9]|1[0-2])\/(\d{2})$/;
+  
+  // CVV validation (3 digits)
+  const cvvRegex = /^\d{3}$/;
+  
+  if (!cardNumberRegex.test(cleanCardNumber)) {
+    alert("Invalid card number. Please enter a 16-digit card number.");
+    return false;
+  }
+  
+  if (!expiryRegex.test(expiryDate)) {
+    alert("Invalid expiry date. Please use MM/YY format.");
+    return false;
+  }
+  
+  // Check if expiry date is in the future
+  const [month, year] = expiryDate.split('/').map(Number);
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear() % 100; // Last two digits
+  const currentMonth = currentDate.getMonth() + 1; // 1-12
+  
+  if (year < currentYear || (year === currentYear && month < currentMonth)) {
+    alert("Card has expired. Please use a valid card.");
+    return false;
+  }
+  
+  if (!cvvRegex.test(cvv)) {
+    alert("Invalid CVV. Please enter a 3-digit CVV.");
+    return false;
+  }
+  
+  return true;
+}
+
+// Handle card payment form submission
+document.getElementById("paymentForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  const cardNumber = document.getElementById("cardNumber").value;
+  const expiryDate = document.getElementById("expiryDate").value;
+  const cvv = document.getElementById("cvv").value;
+
+  // Validate card details
+  if (validateCardDetails(cardNumber, expiryDate, cvv)) {
+    // Process payment
+    alert(`Payment successful! Card: ${cardNumber}, Expiry: ${expiryDate}, CVV: ${cvv}`);
+    
+    // Clear cart after successful payment
+    localStorage.removeItem("cart");
+    location.reload(); // Refresh page to display empty cart
+    
+    // Close modal
+    closeModal();
+  }
+});
+
+// Handle pay on delivery form submission
+document.getElementById("deliveryForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  const deliveryAddress = document.getElementById("deliveryAddress").value.trim();
+
+  // Basic address validation
+  if (deliveryAddress.length < 10) {
+    alert("Please enter a valid delivery address (at least 10 characters).");
+    return;
+  }
+
+  // Simulate order placement for pay on delivery
+  alert(`Order placed successfully! You will pay ${totalAmount.toFixed(2)} upon delivery to: ${deliveryAddress}`);
+  
+  // Clear cart after order placement
+  localStorage.removeItem("cart");
+  location.reload(); // Refresh page to display empty cart
+  
+  // Close modal
+  closeDeliveryModal();
+});
+</script>
+</body>
+</html>
