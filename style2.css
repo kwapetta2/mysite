@@ -207,6 +207,40 @@ tr:hover {
     h3 {
         margin-top: 15px; /* Отступ сверху для каждого h3 */
     }
+    td button {
+        background: rgb(49, 38, 38); /* Matching modal button background */
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem; /* Reduced padding for smaller size */
+        border-radius: 5px;
+        font-size: 0.9rem; /* Smaller font size */
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        font-family: 'Raleway', sans-serif; /* Consistent typography */
+        text-transform: uppercase; /* Matches modal button style */
+    }
     
-   
-  
+    td button:hover {
+        background: rgb(80, 70, 70); /* Matching modal button hover */
+        transform: translateY(-2px); /* Subtle lift effect */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Matching shadow */
+    }
+    
+    @media (max-width: 600px) {
+        td button {
+            padding: 0.4rem 0.8rem; /* Even smaller padding for mobile */
+            font-size: 0.8rem; /* Smaller text for mobile */
+        }
+    }
+    footer {
+        background-color: rgb(49, 38, 38);
+        color: white;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        height: 30px;
+        padding: 6px;
+      }
