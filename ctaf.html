@@ -111,6 +111,11 @@
             </div>            
         </div>
     </div>
+    <footer>
+        <div class="bottom-strip">
+          © 2025 Все права защищены
+        </div>
+      </footer>
     <script>
         const carousel = document.querySelector('.carousel');
     const cards = document.querySelectorAll('.vacancy-card');
@@ -120,27 +125,32 @@
     let currentIndex = 0;
     const totalCards = cards.length;
 
+    // Update carousel position and active card
     function updateCarousel() {
         carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-
+        // Update active card for animation
         cards.forEach((card, index) => {
             card.classList.toggle('active', index === currentIndex);
         });
-
+        // Update active indicator
         indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === currentIndex);
         });
     }
+
+    // Next button click
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % totalCards;
         updateCarousel();
     });
 
+    // Previous button click
     prevBtn.addEventListener('click', () => {
         currentIndex = (currentIndex - 1 + totalCards) % totalCards;
         updateCarousel();
     });
 
+    // Indicator click
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
             currentIndex = index;
@@ -148,6 +158,7 @@
         });
     });
 
+    // Initialize carousel
     updateCarousel();
 ;
     </script>
