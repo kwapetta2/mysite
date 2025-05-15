@@ -6,9 +6,6 @@
   <title>Movie Night Posters</title>
   <link rel="stylesheet" href="style6.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <style>
-    
-  </style>
 </head>
 <body>
   <header>
@@ -114,8 +111,6 @@
       </form>
     </div>
   </div>
-
-
   <script>
     // Logout function
     function logout() {
@@ -147,7 +142,7 @@
       const phone = document.getElementById('phone').value;
 
       // Простая валидация телефона
-      const phoneRegex = /^\+?\d{9,}$/;
+      const phoneRegex = /^\+?\d{9,12}$/;
       if (!phoneRegex.test(phone)) {
         alert('Пожалуйста, введите корректный номер телефона (например, +375*********).');
         return;
@@ -165,5 +160,12 @@
       }
     };
   </script>
+<footer>
+        <div class="bottom-strip">
+            <a href="https://github.com/kwapetta2" class="github-link">github:kwapetta2</a>
+            <span class="copyright">© 2025 Все права защищены</span>
+        </div>
+    </footer>
+  
 </body>
 </html>
